@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EveryEnglish 日常英语</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">EveryEnglish</p>
+        <h1>从真实材料出发，练你今天就可能用上的日常英语。</h1>
+      </div>
+      <nav aria-label="主导航">
+        <a href="#sources">材料来源</a>
+        <a href="#materials">场景生成</a>
+        <a href="#planner">计划</a>
+        <a href="#progress">进步</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-media" aria-hidden="true">
+          <div class="ticker">
+            <span>local news</span>
+            <span>short video</span>
+            <span>shop notice</span>
+            <span>weather update</span>
+            <span>daily message</span>
+          </div>
+          <div class="conversation">
+            <div class="bubble left">Could I change the pickup time?</div>
+            <div class="bubble right">No worries. What time works for you?</div>
+            <div class="bubble left">I might be ten minutes late.</div>
+            <div class="bubble right">That is fine. Just let me know when you arrive.</div>
+          </div>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">Daily English From Real Life</p>
+          <h2 id="hero-title">材料不只是拿来读，而是拿来变成可用场景。</h2>
+          <p>
+            网站会先给你可靠的日常材料来源，再把一个话题拆成真实小需求：询问、解释、确认、拒绝、改约、求助。每次只练一小段，最后必须输出。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#materials">生成一个生活场景</a>
+            <a class="button secondary" href="#sources">查看材料来源</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="sources" class="section source-section" aria-labelledby="sources-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Curated Sources</p>
+            <h2 id="sources-title">日常材料来源库</h2>
+          </div>
+          <div class="section-side">
+            <p>优先选择更新稳定、话题贴近日常、难度可控的材料。想看更多不一样的材料时，可以直接换一批。</p>
+            <button class="button primary" id="refreshSources" type="button">刷新材料</button>
+          </div>
+        </div>
+
+        <p class="batch-label" id="sourceBatchLabel" aria-live="polite"></p>
+        <div class="source-grid" id="sourceGrid"></div>
+      </section>
+
+      <section id="materials" class="section material-lab" aria-labelledby="materials-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Scenario Builder</p>
+            <h2 id="materials-title">把材料变成实际会用到的场景</h2>
+          </div>
+          <p>输入一个今天看到的材料主题，或直接选择上方来源。系统会给出可开口的对话、替换句和输出任务。</p>
+        </div>
+
+        <div class="lab-grid">
+          <form class="material-form" id="materialForm">
+            <label for="materialTitle">今天的材料或生活主题</label>
+            <input id="materialTitle" name="materialTitle" placeholder="例如：下雨导致迟到 / 咖啡店点单 / 朋友临时取消见面" required />
+
+            <label for="materialContext">材料内容、关键词或你遇到的小事</label>
+            <textarea id="materialContext" name="materialContext" rows="7" placeholder="写下材料里的重点，或者描述你今天可能遇到的真实情境。"></textarea>
+
+            <div class="field-row">
+              <label>
+                <span>当前难度</span>
+                <select id="materialLevel" name="materialLevel">
+                  <option value="A2-B1">A2-B1：先说清楚</option>
+                  <option value="B1-B2">B1-B2：更自然</option>
+                  <option value="C1">C1：更地道、更有分寸</option>
+                </select>
+              </label>
+              <label>
+                <span>生活场景</span>
+                <select id="scenarioType" name="scenarioType">
+                  <option value="request">提出小请求</option>
+                  <option value="explain">解释情况</option>
+                  <option value="confirm">确认信息</option>
+                  <option value="reschedule">临时改计划</option>
+                  <option value="help">请求帮助</option>
+                </select>
+              </label>
+            </div>
+
+            <button class="button primary" type="submit">生成日常英语任务</button>
+          </form>
+
+          <article class="task-card" id="taskCard" aria-live="polite">
+            <p class="eyebrow">Today's Scenario</p>
+            <h3>先选一个材料或写一件小事</h3>
+            <p>你会得到：真实场景、4 句以内对话、可替换词块、延伸问题和一次输出任务。</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="tracks" class="section" aria-labelledby="tracks-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Daily Skills</p>
+            <h2 id="tracks-title">日常英语只先练五种能力</h2>
+          </div>
+          <p>先不用追求“高级”，先让自己在真实生活里能接住对话、说出需求、继续往下聊。</p>
+        </div>
+
+        <div class="skill-grid">
+          <article class="skill-card">
+            <span>1</span>
+            <h3>提出请求</h3>
+            <p>Could I...? / Would it be possible to...?</p>
+          </article>
+          <article class="skill-card">
+            <span>2</span>
+            <h3>解释原因</h3>
+            <p>Something came up, so... / The thing is...</p>
+          </article>
+          <article class="skill-card">
+            <span>3</span>
+            <h3>确认信息</h3>
+            <p>Just to confirm... / Did you mean...?</p>
+          </article>
+          <article class="skill-card">
+            <span>4</span>
+            <h3>临时改计划</h3>
+            <p>Can we move it to...? / Would later still work?</p>
+          </article>
+          <article class="skill-card">
+            <span>5</span>
+            <h3>自然收尾</h3>
+            <p>Thanks for understanding. / I appreciate it.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="planner" class="section planner" aria-labelledby="planner-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Realistic Plan</p>
+            <h2 id="planner-title">按真实生活安排学习量</h2>
+          </div>
+          <p>每次只处理一个材料、一个场景、一次输出。量小一点，复用多一点。</p>
+        </div>
+
+        <form class="planner-panel" id="planForm">
+          <label>
+            <span>当前水平</span>
+            <select id="level">
+              <option value="foundation">能看懂简单句，但开口困难</option>
+              <option value="intermediate">能表达大意，但不够自然</option>
+              <option value="advanced">能聊天，但想更地道</option>
+            </select>
+          </label>
+
+          <label>
+            <span>近期目标</span>
+            <select id="goal">
+              <option value="survive">先解决日常小需求</option>
+              <option value="natural">说得更自然，不像翻译</option>
+              <option value="confident">能主动延伸聊天</option>
+            </select>
+          </label>
+
+          <label>
+            <span>每天可用时间</span>
+            <input id="minutes" type="range" min="10" max="45" value="20" step="5" />
+            <strong><span id="minuteValue">20</span> 分钟</strong>
+          </label>
+
+          <button class="button primary" type="submit">生成计划</button>
+        </form>
+
+        <div class="plan-output" id="planOutput">
+          <h3>今日建议</h3>
+          <p>20 分钟：5 分钟看材料，5 分钟拆词块，7 分钟说出场景，3 分钟记录最有用的一句。</p>
+        </div>
+      </section>
+
+      <section id="progress" class="section progress" aria-labelledby="progress-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Visible Progress</p>
+            <h2 id="progress-title">看得见的进步</h2>
+          </div>
+          <p>进步不是收藏了多少材料，而是你能不能把材料变成自己的日常表达。</p>
+        </div>
+
+        <div class="progress-grid">
+          <article class="metric">
+            <span id="streakCount">0</span>
+            <p>连续学习天数</p>
+          </article>
+          <article class="metric">
+            <span id="outputCount">0</span>
+            <p>累计输出次数</p>
+          </article>
+          <article class="metric">
+            <span id="materialCount">0</span>
+            <p>已处理材料</p>
+          </article>
+        </div>
+
+        <div class="output-panel">
+          <div>
+            <h3>完成一次输出</h3>
+            <p>说出一段 4 句以内的小对话，或把你今天真正会用的一句话记下来。</p>
+          </div>
+          <button class="button secondary" id="completeOutput" type="button">记录输出</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>EveryEnglish focuses on small daily scenes, real materials, and usable output.</p>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
